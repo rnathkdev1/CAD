@@ -1,0 +1,47 @@
+#VRML V2.0 utf8
+
+Background {skyColor 1 1 1}
+
+DEF Axes Shape{
+
+geometry Extrusion{
+spine[0 0 0, 10 0 0, 10 0 0, 11 0 0]
+crossSection[0.5 0.5, 0.5 -0.5, -0.5 -0.5, -0.5 0.5, 0.5 0.5]
+scale[0.1 0.1, 0.1 0.1, 0.3 0.3, 0 0]
+}
+appearance Appearance{
+material Material{
+diffuseColor 0 0 0
+}
+}
+}
+
+Transform{
+rotation  0 0 1 1.570796327
+children[ USE Axes]
+}
+
+Transform{
+rotation  0 1 0 -1.570796327
+children[ USE Axes]
+}
+Transform{
+translation  5 6 0
+children[Shape{
+geometry Text{
+string["Kenji Shimada"]
+fontStyle DEF Fonts FontStyle{
+family "SANS"
+justify "MIDDLE"
+style "BOLD"
+size 1
+}
+}
+appearance DEF colors Appearance{
+material Material{
+diffuseColor 1 0 1
+}
+}
+}]
+}
+

@@ -1,0 +1,81 @@
+#VRML V2.0 utf8
+
+Background{
+    skyColor 1 1 1
+}
+
+NavigationInfo{
+    type "EXAMINE"
+}
+
+Shape{
+    geometry Cone{
+        bottomRadius 1
+        height 3
+    }
+    appearance Appearance{
+        material Material{
+            diffuseColor 1.0 0.0 0.0
+        }
+    }
+}
+    
+Shape{
+    geometry IndexedFaceSet{
+        coord Coordinate{
+            point[0 0 0, 2 0 0, 3 1 0, 2 2 0, 0 1 0]
+        }
+        coordIndex[
+            0, 1, 2, 3, -1,
+        ]
+    }
+    appearance Appearance{
+        material Material{
+            diffuseColor 0 0 1
+        }
+    }
+}
+
+Shape {
+    appearance Appearance {
+        material Material {
+            diffuseColor 0 1 0
+        }
+    }
+    geometry Extrusion {
+        crossSection [1 0, 0 -1, -1 0, 0 1, 1 0]
+            scale [0.05 0.05, 0.05 0.05, 0.2 0.2, 0 0]
+            spine [0 -5 0, 0 4.3 0, 0 4.3 0, 0 5 0]
+    }
+}
+
+Shape{   
+    geometry Text {
+        string ["24-681: Computer Aided Design",
+            "Kenji Shimada (SHIMADA@CMU.EDU)" ]
+        fontStyle FontStyle{
+            family "SANS"
+            justify "MIDDLE"
+            style "BOLD"
+            size 0.5
+        }
+    }
+    appearance Appearance {
+        material Material {
+            diffuseColor 1 0 1
+        }
+    }
+}
+
+Transform{
+    translation 4 0 0
+    children Shape{
+        geometry Cylinder{}
+        appearance Appearance{
+            material Material{
+                diffuseColor 0 1 1
+            }
+        }
+    }
+}
+

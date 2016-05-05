@@ -1,0 +1,218 @@
+===========================================================================
+    VRML2 TUTORIAL 1                 by Kenji Shimada (shimada@cmu.edu)
+===========================================================================
+
+A VRML2 file has the .wrl file-type and starts with "#VRML V2.0 utf8".
+(A VRML file starts with "#VRML V1.0 ascii".)
+
+
+---------------------------------------------------------------------------
+Scene Graph
+
+    Group node
+    Transform node
+    Shape node
+    Background node
+    ...
+    Anchor node
+    Collision node
+    Sound node
+    Touch Sensor node
+    ...
+
+
+---------------------------------------------------------------------------
+Shape Node
+
+    Shape{
+        exposedField    SFNode  geometry NULL
+        exposedField    SFNode  appearance NULL
+    }
+          |       |
+          |       V
+          V     type specifier {SF, MF, Vec3f, Rotation, Color, ...}
+        class specifier {field, exposedfield, evenIn, eventOut} 
+
+    Shape{
+        geometry Cone{}
+    }
+
+
+---------------------------------------------------------------------------
+Default Screen Coordinate Systems
+
+    y
+    A
+    |
+    |
+    +----> x
+
+
+---------------------------------------------------------------------------
+Geometric Primitives
+
+    Cone{
+        field   SFFloat     bottomRadius 1
+        field   SFFloat     height 2
+        field   SFBool      side TRUE
+        field   SFBool      bottom TRUE
+    }
+
+    Cone{
+        bottomRadius 1
+        height 3
+    }
+        
+    Sphere, Box, Cylinder, ...
+
+
+---------------------------------------------------------------------------
+Material and Appearance
+
+    Appearance{
+        exposedField    SFNode  material NULL
+        exposedField    SFNode  texture NULL
+        exposedField    SFNode  textureTransform NULL
+    }
+
+    Material{
+        exposedField    SFColor diffuseColor 0.8 0.8 0.8
+        exposedField    SFFloat transparency 0
+        ...
+    }
+
+    Shape{
+        geometry Cone{
+            bottomRadius 1
+            height 3
+        }
+        appearance Appearance{
+            material Material{
+                diffuseColor 1.0 0.0 0.0
+            }
+        }
+    }
+
+
+---------------------------------------------------------------------------
+Background and NavigationInfo
+
+    Background {
+        skyColor 1 1 1
+    }
+
+    NavigationInfo {
+        type "EXAMINE" 
+    }   
+
+
+---------------------------------------------------------------------------
+IndexedFaceSet
+    
+    IndexedFaceSet{
+        exposedField  SFNode  coord             NULL
+        field         MFInt32 coordIndex        []
+        field         SFBool  ccw               TRUE
+        field         SFBool  convex            TRUE
+        field         SFBool  solid             TRUE
+        ...
+    }
+
+    Shape{
+        geometry IndexedFaceSet{
+            coord Coordinate{
+                point[0 0 0, 2 0 0, 3 1 0, 2 2 0, 0 1 0]
+            }
+            coordIndex[
+                0, 1, 2, 3, 4, -1,
+            ]
+        }
+        appearance Appearance{
+            material Material{
+                diffuseColor 0 0 1
+            }
+        }
+    }
+
+
+---------------------------------------------------------------------------
+Extrusion
+
+    Extrusion {
+        field   MFVec3f    spine            [ 0 0 0, 0 1 0 ]
+        field   MFVec2f    crossSection     [ 1 1, 1 -1, -1 -1, -1 1, 1 1 ]
+        field   MFVec2f    scale            1 1
+        field   SFBool     beginCap         TRUE
+        field   SFBool     endCap           TRUE
+        field   SFBool     ccw              TRUE
+        field   SFBool     convex           TRUE
+        field   MFRotation orientation      0 0 1 0
+        field   SFBool     solid            TRUE
+    }
+
+    Extrusion{
+        spine [0 -5 0, 0 4.3 0, 0 4.3 0, 0 5 0]
+        crossSection [1 0, 0 -1, -1 0, 0 1, 1 0]
+        scale [0.05 0.05, 0.05 0.05, 0.2 0.2, 0 0]
+    }
+
+
+---------------------------------------------------------------------------
+Text
+
+    Text{
+        exposedField  MFString string    []
+        exposedField  SFNode   fontStyle NULL
+        exposedField  MFFloat  length    []
+        exposedField  SFFloat  maxExtent 0.0
+    }
+    
+    Text{
+        string ["24-786: GEOMETRIC MODELING--PS1",
+            "KENJI SHIMADA (SHIMADA@CMU.EDU)" ]
+        fontStyle FontStyle{
+            family "SANS"
+            justify "MIDDLE"
+            style "BOLD"
+            size 0.5
+        }
+    }
+
+
+---------------------------------------------------------------------------
+Transform
+    
+    Transform{
+        exposedField SFVec3f     translation      0 0 0
+        exposedField SFRotation  rotation         0 0 1  0
+        exposedField SFVec3f     center           0 0 0
+        exposedField SFVec3f     scale            1 1 1
+        exposedField SFRotation  scaleOrientation 0 0 1  0
+        exposedField MFNode      children         []
+        ...
+    }  
+
+    Transform{
+        translation 3 0 0
+        children Shape{
+            geometry Cylinder{}
+            appearance Appearance{
+                material Material{
+                    diffuseColor 0 1 1
+                }
+            }
+        }
+    }
+
+
+---------------------------------------------------------------------------
+Printing Screen Images
+
+    Windows
+        Print Scrn
+        Alt + Print Scrn
+
+    Unix
+        xv
+    
+---------------------------------------------------------------------------

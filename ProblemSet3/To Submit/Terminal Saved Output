@@ -1,0 +1,43 @@
+Ramnaths-MacBook-Pro:ProblemSet3 Ramnath$ g++ area_mouse.cpp 
+Ramnaths-MacBook-Pro:ProblemSet3 Ramnath$ ./a.out
+
+Problem Set 3-1
+Ramnath Vijaykumar Pillai
+File Name: mouse.txt
+# of vertices: 180
+Area: 157765
+
+
+Ramnaths-MacBook-Pro:ProblemSet3 Ramnath$ g++ area_bird.cpp 
+Ramnaths-MacBook-Pro:ProblemSet3 Ramnath$ ./a.out
+
+Problem Set 3-1
+Ramnath Vijaykumar Pillai
+File Name: bird.txt
+# of vertices: 172
+Area: 34911
+
+
+Ramnaths-MacBook-Pro:ProblemSet3 Ramnath$ g++ shape.cpp 
+Ramnaths-MacBook-Pro:ProblemSet3 Ramnath$ ./a.out
+
+Problem Set 3-2
+Ramnath Vijaykumar Pillai
+File Name: shape.dat
+# of vertices: 33
+# of faces: 66
+Area: 0.0167156
+Volume: 0.000149553
+
+
+Ramnaths-MacBook-Pro:ProblemSet3 Ramnath$ g++ triceratops.cpp 
+Ramnaths-MacBook-Pro:ProblemSet3 Ramnath$ ./a.out
+
+Problem Set 3-2
+Ramnath Vijaykumar Pillai
+File Name: triceratops.dat
+# of vertices: 2832
+# of faces: 2834
+Area: 233.687
+Volume: 136.054
+
